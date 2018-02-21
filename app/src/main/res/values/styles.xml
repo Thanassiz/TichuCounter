@@ -1,0 +1,64 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/MyButtonStyle</item>
+    </style>
+    <!--  STYLE FOR BUTTON~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+    <style name="MyButtonStyle">
+        <item name="android:minHeight">44dp</item>
+        <item name="android:minWidth">88dp</item>
+        <item name="android:layout_margin">@dimen/dimen_16</item>
+        <item name="android:background">@drawable/gradiant_buttons_bg</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+    <!-- STYLE FOR TEAMS ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <style name="EditViewTeamStyle">
+        <item name="android:shadowColor">@android:color/holo_red_dark</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">@dimen/dimen_8</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!-- STYLE FOR SCORE ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <style name="TextViewScoreStyle">
+        <item name="android:shadowColor">@android:color/holo_red_dark</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:textSize">46sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">@dimen/dimen_2</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+    <!-- STYLE FOR SCORE EDITTEXT ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <style name="EditViewScoreStyle">
+        <item name="android:shadowColor">@android:color/holo_red_dark</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+    </style>
+    <!--  STYLE FOR RESET BUTTON~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+    <style name="ResetButtonStyle">
+        <item name="android:background">@drawable/gradiant_special_buttons_bg</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowRadius">5</item>
+    </style>
+
+</resources>

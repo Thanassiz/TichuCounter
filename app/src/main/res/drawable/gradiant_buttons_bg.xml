@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!-- THIS GRADIENT IS USED FOR ALL BUTTONS-->
+    <shape xmlns:android="http://schemas.android.com/apk/res/android">
+        <gradient xmlns:android="http://schemas.android.com/apk/res/android"
+            android:angle="270"
+            android:startColor="@color/colorDeepRed"
+            android:centerColor="@color/colorLightGreen"
+            android:endColor="@color/colorDeepRed"
+            android:gradientRadius="90"
+            android:type="linear" />
+        <!-- Apply border around -->
+        <stroke
+            android:color="@android:color/black"
+            android:width="2dp" />
+        <!-- Make round Buttons -->
+        <corners android:radius="15dp"/>
+    </shape>
+

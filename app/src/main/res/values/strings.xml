@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Tichu Counter</string>
+    <string name="team_a_text">Team A</string>
+    <string name="zero_score_text">0</string>
+    <string name="team_b_text">Team B</string>
+    <string name="add_score_text">Add score&#8230;</string>
+    <string name="go_text">Go</string>
+    <string name="plus_100_text">+100</string>
+    <string name="minus_100_text">-100</string>
+    <string name="number_1_text">1</string>
+    <string name="number_4_text">4</string>
+    <string name="number_7_text">7</string>
+    <string name="symbol_minus_text">-</string>
+    <string name="number_2_text">2</string>
+    <string name="number_5_text">5</string>
+    <string name="number_8_text">8</string>
+    <string name="number_0_text">0</string>
+    <string name="number_3_text">3</string>
+    <string name="number_6_text">6</string>
+    <string name="number_9_text">9</string>
+    <string name="del_button_text">DEL</string>
+    <string name="reset_button_text">Reset</string>
+    <string name="set_teams_button_text">Set\nTeams</string>
+    <string name="reset_teams_button_text">Reset\nTeams</string>
+</resources>

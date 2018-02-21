@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_16"
+    android:background="@drawable/tichu_background">
+
+<!-- TEAMS and SCORE LAYOUT (1st HALF SCREEN) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:baselineAligned="false"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    tools:context="com.example.android.tichucounter.TichuActivity">
+
+    <!-- TEAMS A LAYOUT (LEFT COLUMN) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <EditText
+            style="@style/EditViewTeamStyle"
+            android:id="@+id/editText_name_teamA_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords|textAutoCorrect"
+            android:imeOptions="actionDone"
+            android:text="@string/team_a_text" />
+
+        <TextView
+            style="@style/TextViewScoreStyle"
+            android:id="@+id/textView_score_teamA_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zero_score_text"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"/>
+
+    <!-- TEAMS B LAYOUT (RIGHT COLUMN) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <EditText
+            style="@style/EditViewTeamStyle"
+            android:id="@+id/editText_name_teamB_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords|textAutoCorrect"
+            android:imeOptions="actionDone"
+            android:text="@string/team_b_text"/>
+        <TextView
+            style="@style/TextViewScoreStyle"
+            android:id="@+id/textView_score_teamB_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zero_score_text"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    <!-- BUTTONS LAYOUT (2nd HALF SCREEN) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <!-- FIRST LINE of BUTTONS LAYOUT -->
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_margin="@dimen/dimen_2">
+        <EditText
+            style="@style/EditViewScoreStyle"
+            android:id="@+id/editText_score_teamA_id"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:selectAllOnFocus="false"
+            android:hint="@string/add_score_text" />
+        <Button
+            android:id="@+id/go_button_id"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/go_text"/>
+        <EditText
+            style="@style/EditViewScoreStyle"
+            android:id="@+id/editText_score_teamB_id"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:selectAllOnFocus="false"
+            android:hint="@string/add_score_text"/>
+       </LinearLayout>
+        <!-- BUTTON NUMBER CONTAINER LAYOUT -->
+        <LinearLayout
+            android:baselineAligned="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <!-- FIRST VERTIVAL LINE of BUTTON CONTAINER LAYOUT -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/plus_100_teamA_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/plus_100_text"
+                android:onClick="plus100A"/>
+            <Button
+                android:id="@+id/minus_100_teamA_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/minus_100_text"
+                android:onClick="minus100A"/>
+            <Button
+                style="@style/ResetButtonStyle"
+                android:id="@+id/reset_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/reset_button_text" />
+        </LinearLayout>
+        <!-- SECOND VERTIVAL LINE of  BUTTON CONTAINER LAYOUT -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/number_1_id"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/number_1_text"/>
+            <Button
+                android:id="@+id/number_4_id"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/number_4_text"/>
+            <Button
+                android:id="@+id/number_7_id"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/number_7_text"/>
+            <Button
+                android:id="@+id/symbol_minus_id"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/symbol_minus_text"/>
+        </LinearLayout>
+            <!-- THIRD VERTIVAL LINE of  BUTTON CONTAINER LAYOUT -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/number_2_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/number_2_text"/>
+                <Button
+                    android:id="@+id/number_5_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/number_5_text"/>
+                <Button
+                    android:id="@+id/number_8_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/number_8_text"/>
+                <Button
+                    android:id="@+id/number_0_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/number_0_text"/>
+            </LinearLayout>
+            <!-- FOURTH VERTIVAL LINE of  BUTTON CONTAINER LAYOUT -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/number_3_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/number_3_text"/>
+                <Button
+                    android:id="@+id/number_6_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/number_6_text"/>
+                <Button
+                    android:id="@+id/number_9_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/number_9_text"/>
+                <Button
+                    android:id="@+id/del_button_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/del_button_text"/>
+            </LinearLayout>
+            <!-- FIFTH VERTIVAL LINE of BUTTON CONTAINER LAYOUT -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/plus_100_teamB_button_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/plus_100_text"
+                    android:onClick="plus100B"/>
+                <Button
+                    android:id="@+id/minus_100_teamB_button_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/minus_100_text"
+                    android:onClick="minus100B"/>
+                <Button
+                    android:id="@+id/set_teams_button_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:text="@string/set_teams_button_text"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
