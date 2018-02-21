@@ -26,6 +26,7 @@
         <item name="android:shadowDx">2</item>
         <item name="android:shadowRadius">2</item>
         <item name="android:textSize">26sp</item>
+        <item name="android:maxLength">10</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_margin">@dimen/dimen_8</item>
         <item name="android:gravity">center</item>
@@ -48,6 +49,7 @@
         <item name="android:shadowDx">1</item>
         <item name="android:shadowRadius">1</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:maxLength">4</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorHint">@android:color/white</item>
     </style>
