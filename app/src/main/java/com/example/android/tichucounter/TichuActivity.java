@@ -16,14 +16,29 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
     private final String STATE_KEY_SCORE_A = "scoreA";
     private final String STATE_KEY_SCORE_B = "scoreB";
     private final String STATE_KEY_FLAG = "flag";
-    private final String STATE_KEY_PRESSED= "isPressed";
-
+    private final String STATE_KEY_PRESSED = "isPressed";
     // Declare Views
-    private EditText mEditTextTeamAName, mEditTextTeamBName, mEditTextTeamAScore, mEditTextTeamBScore;
-    private Button mNumber1Button, mNumber2Button, mNumber3Button, mNumber4Button, mNumber5Button,
-            mNumber6Button, mNumber7Button, mNumber8Button, mNumber9Button, mNumber0Button,
-            mResetButton, mMinusButton, mDeleteButton, mSetTeamsButton, mGoButton;
-    private TextView scoreViewA, scoreViewB;
+    private EditText mEditTextTeamAName;
+    private EditText mEditTextTeamBName;
+    private EditText mEditTextTeamAScore;
+    private EditText mEditTextTeamBScore;
+    private Button mNumber0Button;
+    private Button mNumber1Button;
+    private Button mNumber2Button;
+    private Button mNumber3Button;
+    private Button mNumber4Button;
+    private Button mNumber5Button;
+    private Button mNumber6Button;
+    private Button mNumber7Button;
+    private Button mNumber8Button;
+    private Button mNumber9Button;
+    private Button mMinusButton;
+    private Button mDeleteButton;
+    private Button mResetButton;
+    private Button mSetTeamsButton;
+    private Button mGoButton;
+    private TextView scoreViewA;
+    private TextView scoreViewB;
     // main score vars. Used in TextViews.
     private int scoreA = 0;
     private int scoreB = 0;
@@ -41,19 +56,17 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
 
         // Initialize Views
         initializeViews();
-        // changes font on Teams and Score views
+        // Changes font on Teams and Score views
         changeFont();
         // Makes EditTexts of Score null so keyboard Input is disabled.
         mEditTextTeamAScore.setInputType(InputType.TYPE_NULL);
         mEditTextTeamBScore.setInputType(InputType.TYPE_NULL);
-        /*
-         *  make ScoreEditText focused. Cause its inputType is disabled.
-         *  So Keyboard doesn't pop up. Cause by default the first Edittext is focused.
-         */
-            mEditTextTeamAScore.requestFocus();
+        // Make ScoreEditText focused. Cause its inputType is disabled.
+        // So Keyboard doesn't pop up. Cause by default the first Edittext is focused.
+        mEditTextTeamAScore.requestFocus();
     }
 
-    // on CLICK BUTTON , ADD SCORE for A TEAM ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // On CLICK BUTTON , ADD SCORE for A TEAM ~~~~~~~~~~~~~~~~~~~~~~~~~~
     // This functions are called from activity_tichu.xml
     public void plus100A(View v) {
         scoreA = scoreA + 100;
@@ -65,7 +78,7 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
         displayScoreA(scoreA);
     }
 
-    // on CLICK BUTTON , ADD SCORE for B TEAM ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // On CLICK BUTTON , ADD SCORE for B TEAM ~~~~~~~~~~~~~~~~~~~~~~~~~~
     // This functions are called from activity_tichu.xml
     public void plus100B(View v) {
         scoreB = scoreB + 100;
@@ -97,10 +110,8 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
 
     // Sets scores for TEAM A and B (when GoButton is pressed)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     public void setScore(View v) {
-        /*
-         * Sets score only when there is something in the edits texts.
-         * To avoid NumberFormatException!
-         */
+        // Sets score only when there is something in the edits texts.
+        // To avoid NumberFormatException!
         if ((!TextUtils.isEmpty(mEditTextTeamAScore.getText()) && !TextUtils.isEmpty(mEditTextTeamBScore.getText()))
                 && (!TextUtils.isEmpty(mEditTextTeamAScore.getText()) || TextUtils.isEmpty(mEditTextTeamBScore.getText()))
                 && (TextUtils.isEmpty(mEditTextTeamAScore.getText()) || !TextUtils.isEmpty(mEditTextTeamBScore.getText()))) {
@@ -153,7 +164,7 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
         flag = 0;
     }
 
-    // changes font on Teams and Score views
+    // Changes font on Teams and Score views
     private void changeFont() {
         Typeface typeface = Typeface.createFromAsset(getAssets(), getString(R.string.font_path));
         mEditTextTeamAName.setTypeface(typeface);
@@ -162,13 +173,10 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
         scoreViewB.setTypeface(typeface);
     }
 
-
     @Override
     public void onClick(View view) {
-        /*
-         * Based on the id of the clicked button, we add the value of the
-         * pressed button to the focused / selected editeText_score.
-         */
+        // Based on the id of the clicked button, we add the value of the
+        // pressed button to the focused / selected editText_score.
         switch (view.getId()) {
             case R.id.number_0_id:
                 if (mEditTextTeamAScore.isFocused()) {
@@ -261,22 +269,18 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.symbol_minus_id:
-                /*
-                 * Checks if the textView is empty, so it will add only one minus symbol "-"
-                 * and only in the beggining of the text (caue its a surplus sign)
-                 * it can't be added repeatedly
-                 */
+                // Checks if the textView is empty, so it will add only one minus symbol "-"
+                // and only in the beginning of the text (caue its a surplus sign)
+                // it can't be added repeatedly
                 if (mEditTextTeamAScore.isFocused()) {
                     if (TextUtils.isEmpty(mEditTextTeamAScore.getText())) {
                         pressedNumberA += getString(R.string.symbol_minus_text);
                         mEditTextTeamAScore.setText(pressedNumberA);
                     }
                 }
-                /*
-                 * Checks if the textView is empty, so it will add only one minus symbol "-"
-                 * and only in the beggining of the text (caue its a surplus sign)
-                 * it can't be added repeatedly
-                 */
+                // Checks if the textView is empty, so it will add only one minus symbol "-"
+                // and only in the beggining of the text (caue its a surplus sign)
+                // it can't be added repeatedly
                 else if (mEditTextTeamBScore.isFocused()) {
                     if (TextUtils.isEmpty(mEditTextTeamBScore.getText())) {
                         pressedNumberB += getString(R.string.symbol_minus_text);
@@ -286,20 +290,15 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.del_button_id:
                 if (mEditTextTeamAScore.isFocused()) {
-
-                    /*
-                     * Checks if there is text in the Edittext , only then it deletes a digit.
-                     * To avoid StringIndexOutOfBoundsException!
-                     */
+                    // Checks if there is text in the Edittext , only then it deletes a digit.
+                    // To avoid StringIndexOutOfBoundsException!
                     if (pressedNumberA.length() > 0) {
                         pressedNumberA = pressedNumberA.substring(0, pressedNumberA.length() - 1);
                         mEditTextTeamAScore.setText(pressedNumberA);
                     }
                 } else if (mEditTextTeamBScore.isFocused()) {
-                    /*
-                     * Checks if there is text in the Edittext , only then it deletes a digit.
-                     * To avoid StringIndexOutOfBoundsException!
-                     */
+                    // Checks if there is text in the Edittext , only then it deletes a digit.
+                    // To avoid StringIndexOutOfBoundsException!
                     if (!pressedNumberB.contentEquals("")) {
                         pressedNumberB = pressedNumberB.substring(0, pressedNumberB.length() - 1);
                         mEditTextTeamBScore.setText(pressedNumberB);
@@ -397,7 +396,7 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
         displayScoreB(scoreB);
         // Necessary checks, to redisplay the UI as it was before orientation changed.
         // because UI is changing when button (set teams) is pressed.
-        if (isPressed && flag == 1 ) {
+        if (isPressed && flag == 1) {
             setTeamNames();
         } else {
             resetTeamNames();
