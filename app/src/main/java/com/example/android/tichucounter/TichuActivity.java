@@ -12,6 +12,12 @@ import android.widget.TextView;
 
 public class TichuActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // Key vars, helps to save variables in Bundles (savedInstanceState, outState)
+    private final String STATE_KEY_SCORE_A = "scoreA";
+    private final String STATE_KEY_SCORE_B = "scoreB";
+    private final String STATE_KEY_FLAG = "flag";
+    private final String STATE_KEY_PRESSED= "isPressed";
+
     // Declare Views
     private EditText mEditTextTeamAName, mEditTextTeamBName, mEditTextTeamAScore, mEditTextTeamBScore;
     private Button mNumber1Button, mNumber2Button, mNumber3Button, mNumber4Button, mNumber5Button,
@@ -19,9 +25,11 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
             mResetButton, mMinusButton, mDeleteButton, mSetTeamsButton, mGoButton;
     private TextView scoreViewA, scoreViewB;
     // main score vars. Used in TextViews.
-    private int scoreA;
-    private int scoreB;
+    private int scoreA = 0;
+    private int scoreB = 0;
+    // Flag is helper var to change SetTeamsButton
     private int flag = 0;
+    private boolean isPressed = false;
     // Helper vars to take values from strings xml and use em to update the score's editTexts.
     private String pressedNumberA = "";
     private String pressedNumberB = "";
@@ -42,7 +50,7 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
          *  make ScoreEditText focused. Cause its inputType is disabled.
          *  So Keyboard doesn't pop up. Cause by default the first Edittext is focused.
          */
-        mEditTextTeamAScore.requestFocus();
+            mEditTextTeamAScore.requestFocus();
     }
 
     // on CLICK BUTTON , ADD SCORE for A TEAM ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,7 +119,7 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
     // Set names for TEAM A and B~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Locks the EditTexts Views and changes SetTeamsButton appearance.
     // Also changes Flag which is used to define which function should be called when pressing  SetTeamsButton.
-    public void setTeamNames(View v) {
+    public void setTeamNames() {
         mEditTextTeamAName.setClickable(false);
         mEditTextTeamAName.setFocusable(false);
         mEditTextTeamAName.setBackgroundColor(getResources().getColor(R.color.colorTransperant));
@@ -128,7 +136,7 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
     // Reset names for TEAM A and B~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Unlocks the EditTexts Views, also reset the Team names and changes SetTeams button appearance to default.
     // Also changes Flag which is used to define which function should be called when pressing  SetTeamsButton.
-    public void resetTeamNames(View v) {
+    public void resetTeamNames() {
         mEditTextTeamAName.setClickable(true);
         mEditTextTeamAName.setFocusableInTouchMode(true);
         mEditTextTeamAName.setFocusable(true);
@@ -305,11 +313,13 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
                 setScore(view);
                 break;
             case R.id.set_teams_button_id:
+                // Button is pressed.
+                isPressed = true;
                 // Default Flag value is 0. Flag a helper var to switch function when pressing this button.
                 if (flag == 0) {
-                    setTeamNames(view);
+                    setTeamNames();
                 } else {
-                    resetTeamNames(view);
+                    resetTeamNames();
                 }
                 break;
             default:
@@ -356,5 +366,41 @@ public class TichuActivity extends AppCompatActivity implements View.OnClickList
         mDeleteButton.setOnClickListener(TichuActivity.this);
         mSetTeamsButton.setOnClickListener(TichuActivity.this);
         mGoButton.setOnClickListener(TichuActivity.this);
+    }
+
+    // This method is used to save vars (in Bundle) before the Activity is destroyed.
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(STATE_KEY_SCORE_A, scoreA);
+        outState.putInt(STATE_KEY_SCORE_B, scoreB);
+        outState.putInt(STATE_KEY_FLAG, flag);
+        outState.putBoolean(STATE_KEY_PRESSED, isPressed);
+    }
+
+    // Repopulates the values that were saved in onSavedInstaceState's Bundle.
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        scoreA = savedInstanceState.getInt(STATE_KEY_SCORE_A);
+        scoreB = savedInstanceState.getInt(STATE_KEY_SCORE_B);
+        flag = savedInstanceState.getInt(STATE_KEY_FLAG);
+        isPressed = savedInstanceState.getBoolean(STATE_KEY_PRESSED);
+    }
+
+    // onResume is called after onRestoreInstanceState method, so this method
+    // is used to redisplay the Views (now that vars are already repopulated)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        displayScoreA(scoreA);
+        displayScoreB(scoreB);
+        // Necessary checks, to redisplay the UI as it was before orientation changed.
+        // because UI is changing when button (set teams) is pressed.
+        if (isPressed && flag == 1 ) {
+            setTeamNames();
+        } else {
+            resetTeamNames();
+        }
     }
 }

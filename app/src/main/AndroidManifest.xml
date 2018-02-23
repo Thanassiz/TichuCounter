@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/icon_xxl"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TichuActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize">
+        <activity android:name=".TichuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
